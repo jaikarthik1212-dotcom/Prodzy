@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark Mode First (Ultra Premium) */
+    --background: #0E1117;
+    --foreground: #FFFFFF;
+    --surface: #171C24;
+    
+    --card: #1D2330;
+    --card-foreground: #FFFFFF;
+    
+    --popover: #1D2330;
+    --popover-foreground: #FFFFFF;
+    
+    --primary: #6C63FF;
+    --primary-foreground: #FFFFFF;
+    
+    --secondary: #00C2FF;
+    --secondary-foreground: #FFFFFF;
+    
+    --muted: #171C24;
+    --muted-foreground: #9AA4B2;
+    
+    --accent: #FF6B6B;
+    --accent-foreground: #FFFFFF;
+    
+    --success: #16C784;
+    --success-foreground: #FFFFFF;
+    
+    --warning: #F4B400;
+    --warning-foreground: #FFFFFF;
+    
+    --danger: #EA4335;
+    --danger-foreground: #FFFFFF;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 215 27.9% 16.9%; /* Standard grayish border */
+    --input: 215 27.9% 16.9%;
+    --ring: 254 100% 69%; /* Primary color hsl */
+    
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Glassmorphism utilities */
+  .glass {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  }
+  
+  .glass-card {
+    @apply bg-[#1D2330]/80 backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)];
+  }
+}
+
+@media print {
+  body {
+    background-color: #0E1117 !important;
+    color: #FFFFFF !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .print-hidden {
+    display: none !important;
+  }
+
+  /* Force background colors on glass cards in print */
+  .glass-card, .calendar-override .rbc-month-view {
+    background-color: #171C24 !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    box-shadow: none !important;
+  }
+  
+  /* Expand main container */
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    width: 100% !important;
+  }
+  
+  /* Don't break inside the calendar */
+  .rbc-month-view {
+    page-break-inside: avoid;
+  }
+}
