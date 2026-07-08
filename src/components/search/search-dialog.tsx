@@ -3,12 +3,19 @@
 import { useState, useEffect, useCallback } from "react"
 import { Search, X, FileText, ArrowRight } from "lucide-react"
 import { searchContent } from "@/app/actions/content"
-import { getStatusConfig, getPlatformConfig } from "@/lib/constants"
+import { getStatusConfig } from "@/lib/constants"
 
 export function SearchDialog() {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState("")
-  const [results, setResults] = useState<any[]>([])
+  const [results, setResults] = useState<{
+    id: string
+    title: string
+    status: string
+    platform: string
+    contentType: string
+    project?: { name: string }
+  }[]>([])
   const [isSearching, setIsSearching] = useState(false)
 
   // Keyboard shortcut: Ctrl+K or Cmd+K
